@@ -1,0 +1,100 @@
+[
+    {
+        "FriendId": 1,
+        "FirstName": "Harry",
+        "LastName": "Took",
+        "Country": "Sweden",
+        "Pet": "Charlie the happy Cat"
+    },
+    {
+        "FriendId": 2,
+        "FirstName": "Severus",
+        "LastName": "Gamgee",
+        "Country": "Norway",
+        "Pet": "Wanda the happy Fish"
+    },
+    {
+        "FriendId": 5,
+        "FirstName": "Lord",
+        "LastName": "Dumbledore",
+        "Country": "Sweden",
+        "Pet": "Simba the happy Dog"
+    },
+    {
+        "FriendId": 5,
+        "FirstName": "Lord",
+        "LastName": "Dumbledore",
+        "Country": "Sweden",
+        "Pet": "Max the happy Bird"
+    },
+    {
+        "FriendId": 3,
+        "FirstName": "Sam",
+        "LastName": "Baggins",
+        "Country": "Denmark",
+        "Pet": "Wanda the happy Cat"
+    },
+    {
+        "FriendId": 7,
+        "FirstName": "Albus",
+        "LastName": "Potter",
+        "Country": "Denmark",
+        "Pet": "Milo the happy Dog"
+    },
+    {
+        "FriendId": 8,
+        "FirstName": "Draco",
+        "LastName": "Snape",
+        "Country": "Finland",
+        "Pet": "Teddy the happy Fish"
+    },
+    {
+        "FriendId": 8,
+        "FirstName": "Draco",
+        "LastName": "Snape",
+        "Country": "Finland",
+        "Pet": "Leo the happy Bird"
+    },
+    {
+        "FriendId": 3,
+        "FirstName": "Sam",
+        "LastName": "Baggins",
+        "Country": "Denmark",
+        "Pet": "Charlie the happy Cat"
+    },
+    {
+        "FriendId": 7,
+        "FirstName": "Albus",
+        "LastName": "Potter",
+        "Country": "Denmark",
+        "Pet": "Wanda the happy Cat"
+    },
+    {
+        "FriendId": 8,
+        "FirstName": "Draco",
+        "LastName": "Snape",
+        "Country": "Finland",
+        "Pet": "Simba the happy Dog"
+    },
+    {
+        "FriendId": 3,
+        "FirstName": "Sam",
+        "LastName": "Baggins",
+        "Country": "Denmark",
+        "Pet": "Charlie the happy Dog"
+    },
+    {
+        "FriendId": 6,
+        "FirstName": "Hermione",
+        "LastName": "Granger",
+        "Country": "Norway",
+        "Pet": "Wanda the happy Fish"
+    },
+    {
+        "FriendId": 8,
+        "FirstName": "Draco",
+        "LastName": "Snape",
+        "Country": "Finland",
+        "Pet": "Simba the happy Cat"
+    }
+]
