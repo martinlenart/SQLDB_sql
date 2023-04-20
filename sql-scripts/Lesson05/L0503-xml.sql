@@ -9,8 +9,13 @@ SELECT
    MY_XML.Friend.query('Pet').value('.', 'NVARCHAR(200)') AS Pet
 INTO #fromXML
 FROM (SELECT CAST(MY_XML AS xml)
-      FROM OPENROWSET(BULK N'/usr/images/friends2.xml', SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
-      CROSS APPLY MY_XML.nodes('Friend') AS MY_XML (Friend);
+-- Docker container
+ FROM OPENROWSET(BULK N'/usr/images/friends2.xml', SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
+
+-- SQL Server Express
+--   FROM OPENROWSET(BULK N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\friends2.xml', SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
+      
+CROSS APPLY MY_XML.nodes('Friend') AS MY_XML (Friend);
 
 --depending on your xml you may need to remove som whitespace characters and new line characters
 UPDATE #fromXML

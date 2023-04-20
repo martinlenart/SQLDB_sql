@@ -1,0 +1,44 @@
+[
+    {
+        "FriendId": 2,
+        "FirstName": "Harry",
+        "LastName": "Took",
+        "Country": "Sweden",
+        "Pet": "Charlie the happy Cat"
+    },
+    {
+        "FriendId": 2,
+        "FirstName": "Harry",
+        "LastName": "Took",
+        "Country": "Sweden",
+        "Pet": "Wanda the happy Fish"
+    },
+    {
+        "FriendId": 3,
+        "FirstName": "Severus",
+        "LastName": "Gamgee",
+        "Country": "Norway",
+        "Pet": "Cooper the happy Cat"
+    },
+    {
+        "FriendId": 7,
+        "FirstName": "Hermione",
+        "LastName": "Granger",
+        "Country": "Norway",
+        "Pet": "Milo the happy Dog"
+    },
+    {
+        "FriendId": 8,
+        "FirstName": "Albus",
+        "LastName": "Potter",
+        "Country": "Denmark",
+        "Pet": "Teddy the happy Fish"
+    },
+    {
+        "FriendId": 8,
+        "FirstName": "Albus",
+        "LastName": "Potter",
+        "Country": "Denmark",
+        "Pet": "Leo the happy Bird"
+    }
+]

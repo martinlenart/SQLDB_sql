@@ -5,7 +5,12 @@ GO
 SELECT friend.* 
 INTO #fromJSON
 FROM
- OPENROWSET(BULK N'/usr/images/friends3.json', SINGLE_CLOB) AS json
+-- Docker container
+OPENROWSET(BULK N'/usr/images/friends3.json', SINGLE_CLOB) AS json
+
+-- SQL Server Express
+-- OPENROWSET(BULK N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\friends3.json', SINGLE_CLOB) AS json
+
  CROSS APPLY OPENJSON(BulkColumn)
  WITH(
     FriendId int, FirstName NVARCHAR(200), LastName NVARCHAR(200), 
