@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
 <Friend FriendId="2">
 	<FirstName>
 		Harry
@@ -82,3 +85,5 @@
 		Leo the happy Bird
 	</Pet>
 </Friend>
+
+</root>

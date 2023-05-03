@@ -6,7 +6,8 @@ SELECT [rental_id], [rental_date],
     DATEPART(year,rental_date) AS year,
     DATEPART(month,rental_date) AS month,
     DATEPART(day,rental_date) AS day,
-    DATEPART(weekday,rental_date) AS weekday
+    DATEPART(weekday,rental_date) AS weekday,
+        DATEPART(week,rental_date) AS week
 
 FROM [sakila].[dbo].[rental]
 WHERE rental_date BETWEEN '2005-05-24 00:00:00' AND '2005-05-25 00:00:00';

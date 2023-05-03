@@ -13,6 +13,7 @@ CREATE FULLTEXT INDEX ON dbo.film
   [title] Language 1033,  
   [description] Language 1033       
 )   
+--Copy the primary key index name from dbo.film
 KEY INDEX PK__film__349764A8FBB0AB03 ON ftCatalog;
 GO 
 
