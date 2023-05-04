@@ -14,3 +14,10 @@ FROM film_actor fa
 GROUP BY fa.actor_id, f.rating WITH ROLLUP
 ORDER BY 1,2; 
 
+--Use COALESCE if you want  something more meaningfull than NULL in the rollup
+SELECT  COALESCE(CAST(YEAR(rental_date) AS NVARCHAR), 'All years') AS YEAR, 
+        COALESCE(CAST(MONTH(rental_date) AS NVARCHAR), 'All months') AS MONTH, 
+        COUNT(*) AS NrRentals
+FROM dbo.rental
+GROUP BY YEAR(rental_date), MONTH(rental_date) WITH ROLLUP
+ORDER BY 1, 2 ASC;
