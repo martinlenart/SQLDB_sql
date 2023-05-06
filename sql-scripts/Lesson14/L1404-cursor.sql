@@ -22,5 +22,5 @@ WHILE @@FETCH_STATUS = 0 BEGIN
     FETCH NEXT FROM customer_cursor INTO @customer_id, @fullname;
 END
 
-CLOSE products;
-DEALLOCATE products;
+CLOSE customer_cursor;
+DEALLOCATE customer_cursor;

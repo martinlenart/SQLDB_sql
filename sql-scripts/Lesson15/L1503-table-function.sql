@@ -9,7 +9,7 @@ RETURN
     INNER JOIN dbo.Pets p ON f.FriendId = p.csFriendFriendId
     INNER JOIN dbo.Adress a ON f.AdressId = a.AdressId
     GROUP BY a.Country
-    ORDER BY 2 DESC 
+    ORDER BY 2 DESC
 GO
 
 CREATE FUNCTION dbo.udf_LeastFriends()
