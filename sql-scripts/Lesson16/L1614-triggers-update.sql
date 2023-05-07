@@ -3,28 +3,34 @@ GO
 
 --UPDATE Triggers
 
---INSTEAD OF trigger fires before any constraint check, e.g., not null in FriendId
---I can use this trigger to create a GUID
+--INSTEAD OF trigger example
 CREATE OR ALTER TRIGGER trInsteadUpdateFriends
 ON [dbo].[tmpFriends] INSTEAD OF UPDATE
 AS
 BEGIN
     SET NOCOUNT ON;
 
+    --inserted is a temporary in-memory table managed by SQL Server that keeps info about the row to be inserted
     DECLARE @Count INT;
     SELECT @Count = COUNT(*) FROM inserted;
  
     PRINT 'About to update ' + CAST (@Count AS NVARCHAR) + ' friends';
 
-    UPDATE [dbo].[tmpFriends]
-    SET 
-    WHERE [dbo].[tmpFriends].FriendId IN (SELECT FriendId From inserted);
+    UPDATE t
+        SET FirstName = i.FirstName,
+        LastName = i.LastName,
+        Email = i.Email,
+        AdressId = i.AdressId,
+        Birthday = i.BirthDay
+    FROM [dbo].[tmpFriends] t
+    INNER JOIN inserted i ON t.FriendId = i.FriendId
+
+   PRINT 'Updated ' + CAST (@@RowCount AS NVARCHAR) + ' friends';
 
 END
 GO
 
---AFTER trigger fires after the row is inserted
---I can use this trigger to UPDATE any value in the database. For example replace NULL in an email adress
+--AFTER trigger example
 CREATE OR ALTER TRIGGER trAfterUpdateFriends
 ON [dbo].[tmpFriends] AFTER UPDATE
 AS
@@ -43,7 +49,7 @@ UPDATE [dbo].[tmpFriends]
 SET Firstname = 'Hairy'
 WHERE FirstName = 'Harry' AND LastName = 'Potter';
 
-SELECT * FROM [dbo].[tmpFriends] WHERE LastName = 'Potter';
+SELECT * FROM [dbo].[tmpFriends] WHERE FirstName LIKE 'Ha%' AND LastName = 'Potter';
 
 
 --List all triggers

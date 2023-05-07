@@ -9,6 +9,10 @@ DROP TRIGGER IF EXISTS trInsteadInsertFriends;
 DROP TRIGGER IF EXISTS trAfterInsertFriends;
 DROP TRIGGER IF EXISTS trInsteadDeleteFriends;
 DROP TRIGGER IF EXISTS trAfterDeleteFriends;
+DROP TRIGGER IF EXISTS trInsteadUpdateFriends;
+DROP TRIGGER IF EXISTS trAfterUpdateFriends;
+
+
 DROP TABLE IF EXISTS [dbo].[tmpFriends];
 
 --Create a table for experiement, unfortunatly #temp tables does not work with trigger. 
@@ -30,4 +34,5 @@ GO
 INSERT INTO [dbo].[tmpFriends] 
 SELECT *, NULL FROM dbo.Friends; --the ,NULL sets to Modified
 
---Now we are ready to experiement with triggers
+--Now we are ready to experiment with triggers
+

@@ -3,8 +3,7 @@ GO
 
 --DELETE Triggers
 
---INSTEAD OF trigger fires before any constraint check, e.g., not null in FriendId
---I can use this trigger to create a GUID
+--INSTEAD OF trigger example
 CREATE OR ALTER TRIGGER trInsteadDeleteFriends
 ON [dbo].[tmpFriends] INSTEAD OF DELETE
 AS
@@ -19,9 +18,7 @@ BEGIN
 END
 GO
 
---AFTER trigger fires after the row is inserted
---I can use this trigger to UPDATE any value in the database. 
---In this example I simply use PRINT to say how many friends where deleted from each city
+--AFTER trigger example
 CREATE OR ALTER TRIGGER trAfterDeleteFriends
 ON [dbo].[tmpFriends] AFTER DELETE
 AS
