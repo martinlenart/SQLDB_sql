@@ -29,3 +29,13 @@ INNER JOIN dbo.Albums a ON g.MusicGroupId = a.csMusicGroupMusicGroupId
 GROUP BY g.MusicGroupId, g.Name, a.AlbumId, a.Name WITH ROLLUP
 ORDER BY 1,2,5 DESC;
 
+
+--Outer join istf Inner joins
+SELECT * FROM dbo.MusicGroups m
+LEFT OUTER JOIN dbo.Albums a ON m.MusicGroupId = a.csMusicGroupMusicGroupId
+
+SELECT * FROM dbo.MusicGroups m
+RIGHT OUTER JOIN dbo.Albums a ON m.MusicGroupId = a.csMusicGroupMusicGroupId
+
+SELECT * FROM dbo.MusicGroups m
+FULL OUTER JOIN dbo.Albums a ON m.MusicGroupId = a.csMusicGroupMusicGroupId

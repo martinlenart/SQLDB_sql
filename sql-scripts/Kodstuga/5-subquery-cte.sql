@@ -7,14 +7,14 @@ GO
 SELECT TOP 1 g.MusicGroupId, g.Name, SUM (a.CopiesSold) [copies sold] FROM dbo.MusicGroups g
 INNER JOIN dbo.Albums a ON g.MusicGroupId = a.csMusicGroupMusicGroupId
 GROUP BY g.MusicGroupId, g.Name
-ORDER BY 2 DESC;
+ORDER BY 3 DESC;
 
 --Step2: Isolate the scalar MusicGroupId by using subquery
 SELECT s.MusicGroupId FROM (
     SELECT TOP 1 g.MusicGroupId, g.Name, SUM (a.CopiesSold) [copies sold] FROM dbo.MusicGroups g
     INNER JOIN dbo.Albums a ON g.MusicGroupId = a.csMusicGroupMusicGroupId
     GROUP BY g.MusicGroupId, g.Name
-    ORDER BY 2 DESC) s;
+    ORDER BY 3 DESC) s;
 
 --Step3: Find all Artists in the music group with MusicGroupId isolated in Step2
 --This is the SINGEL SQL ANSWER
@@ -24,7 +24,7 @@ WHERE csMusicGroupMusicGroupId = (
     SELECT TOP 1 g.MusicGroupId, g.Name, SUM (a.CopiesSold) [copies sold] FROM dbo.MusicGroups g
     INNER JOIN dbo.Albums a ON g.MusicGroupId = a.csMusicGroupMusicGroupId
     GROUP BY g.MusicGroupId, g.Name
-    ORDER BY 2 DESC) s
+    ORDER BY 3 DESC) s
 )
 
 --By CTE
@@ -34,7 +34,7 @@ WITH group_hi_sale AS (
     SELECT TOP 1 g.MusicGroupId, g.Name, SUM (a.CopiesSold) [copies sold] FROM dbo.MusicGroups g
     INNER JOIN dbo.Albums a ON g.MusicGroupId = a.csMusicGroupMusicGroupId
     GROUP BY g.MusicGroupId, g.Name
-    ORDER BY 2 DESC
+    ORDER BY 3 DESC
 )
 --Step2: Set the CTE Main query, showing members in the group from result in Step 1
 SELECT * FROM dbo.Artists
@@ -79,4 +79,5 @@ WITH oldest_fart AS (
 SELECT DISTINCT g.* FROM dbo.MusicGroups g
 INNER JOIN dbo.Artists a ON g.MusicGroupId = a.csMusicGroupMusicGroupId 
 WHERE DATEDIFF(year, Birthday, GETDATE()) = (SELECT age FROM oldest_fart);
+
 

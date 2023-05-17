@@ -38,12 +38,23 @@ ORDER BY 3 DESC;
 
 GO
 
+--To get the result set of a Stored procedure into a table
 --You have to create the temp table
 CREATE TABLE #tmpTable(first_name NVARCHAR(200), last_name NVARCHAR(200), tot_revenue MONEY);
 
 -- Fill a temp table with the result using INSERT INTO
 INSERT INTO #tmpTable EXEC dbo.udp_ActorsMovieRevenue 'S%', 'PG';
 SELECT * FROM #tmpTable;
+
+-- Or a table variable
+DECLARE @tmpTable TABLE (
+        first_name NVARCHAR(200), 
+        last_name NVARCHAR(200), 
+        tot_revenue MONEY);
+        
+INSERT INTO @tmpTable EXEC dbo.udp_ActorsMovieRevenue 'S%', 'PG';
+SELECT * FROM @tmpTable;
+
 
 
 --House cleaning

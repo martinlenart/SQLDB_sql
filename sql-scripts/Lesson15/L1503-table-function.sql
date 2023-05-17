@@ -15,7 +15,6 @@ GO
 CREATE FUNCTION dbo.udf_LeastFriends()
 RETURNS TABLE AS
 RETURN 
-
     SELECT TOP 1 a.Country, COUNT(f.FriendId) [Nr of Friends] FROM dbo.Friends f
     INNER JOIN dbo.Adress a ON f.AdressId = a.AdressId
     GROUP BY a.Country
