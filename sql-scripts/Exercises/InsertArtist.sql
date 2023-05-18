@@ -14,10 +14,12 @@ GO
 --Putting it together, return code, default parameters and output parameters with
 --Transactions and Error Handling and logging
 CREATE OR ALTER PROCEDURE dbo.usp_InsertArtist
-    @FirstName NVARCHAR(200) = NULL,
-    @LastName NVARCHAR(200) = NULL,
-    --Use an output variable to return number of rows in the dataset
-    @Count INT OUTPUT,
+    @ArtistId UNIQUEIDENTIFIER, -- NULL will create a new GUID
+    @FirstName NVARCHAR(200),
+    @LastName NVARCHAR(200),
+
+    --Use an output variable to return ArtistId of inserted, NULL will indicate error
+    @InsertedArtistId UNIQUEIDENTIFIER OUTPUT,
     
     --Parameters with default values
     @BirthDay DATETIME = NULL,
@@ -25,17 +27,23 @@ CREATE OR ALTER PROCEDURE dbo.usp_InsertArtist
 
     SET NOCOUNT ON;
 
-    DECLARE @retCode INT = 0;
-    SET @Count = 0;
+    DECLARE @retCode INT;
+    SET @InsertedArtistId = NULL;
 
     BEGIN TRANSACTION    
         BEGIN TRY
-            INSERT INTO dbo.Artists VALUES 
-                ('hello', @FirstName, @LastName, @BirthDay, @MusicGroupId); -- will trigger ArtistId error
 
-            --@@ROWCOUNT always number of rows affected in last statement
-            SET @Count = @@ROWCOUNT; 
+            IF @ArtistId IS NULL 
+                SET @ArtistId = NEWID();
+
+            INSERT INTO dbo.Artists VALUES 
+                (@ArtistId, @FirstName, @LastName, @BirthDay, @MusicGroupId); 
+
             COMMIT;
+
+            --Set the output variable after commit, variables are not rolled back
+            SET @InsertedArtistId = @ArtistId; 
+            SET @retCode = 0;
 
         END TRY       
         BEGIN CATCH
@@ -47,10 +55,11 @@ CREATE OR ALTER PROCEDURE dbo.usp_InsertArtist
             VALUES (ERROR_NUMBER(), ERROR_MESSAGE(), ERROR_LINE(), ERROR_SEVERITY())
             
             --Notify user of stored procedure that it did not succeed
-            SET @retCode = 1
-            
-            --or THROW the same error again to a client
-            --;THROW
+            --Not really needed as I throw an error.
+
+            SET @retCode = 1;            
+            THROW 60000, 'Insert Artist Error', 1;
+
         END CATCH;
     RETURN @retCode;
 GO
