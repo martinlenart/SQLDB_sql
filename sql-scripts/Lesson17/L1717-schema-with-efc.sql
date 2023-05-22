@@ -1,6 +1,12 @@
 USE musicefc;
 GO
 
+--cleanup
+DROP USER Hermione;
+DROP USER Albus;
+DROP USER Gandalf;
+DROP ROLE musicefcUsers;
+
 --Let's create a musicefc database user and login from the C# entity framework core program
 --Create a role for common users
 DROP ROLE IF EXISTS musicefcUsers;

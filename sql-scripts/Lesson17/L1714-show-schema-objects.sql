@@ -1,4 +1,4 @@
-USE musicefc; 
+USE musicefc;
 GO
 
 --Show existing schemas and number of objects
